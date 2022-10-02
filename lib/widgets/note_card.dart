@@ -7,6 +7,7 @@ String path="";
 Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc){
   path=doc['ipath'];
   String dt=doc['creation_date'].toString().substring(0,10);
+  String tit=doc['note_title'].toString();
   return InkWell(
     onTap: onTap,
       child:Container(
@@ -19,13 +20,13 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc){
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            if(tit!="")Center(
               child:Text(
               doc['note_title'],
               style: Appstyle.mainTitle,
             ),
             ),
-            SizedBox(height: 4.0,),
+            if(tit!="")SizedBox(height: 4.0,),
             Text(dt,style: Appstyle.mainTitle,),
             SizedBox(height: 4.0,),
             if(path!="") buildFileImage(),
