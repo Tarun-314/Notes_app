@@ -6,6 +6,7 @@ import 'dart:io';
 String path="";
 Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc){
   path=doc['ipath'];
+  String dt=doc['creation_date'].toString().substring(0,10);
   return InkWell(
     onTap: onTap,
       child:Container(
@@ -25,7 +26,7 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc){
             ),
             ),
             SizedBox(height: 4.0,),
-            Text(doc['creation_date'],style: Appstyle.mainTitle,),
+            Text(dt,style: Appstyle.mainTitle,),
             SizedBox(height: 4.0,),
             if(path!="") buildFileImage(),
             if(path=="")SizedBox(height:8.0),
