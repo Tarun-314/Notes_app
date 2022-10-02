@@ -17,15 +17,17 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
   String path="";
   String id="";
   int color_id= Random().nextInt(Appstyle.cardsColor.length);
-  String date= DateTime.now().toString();
+  String tdate= DateTime.now().toString();
   dynamic docid=20;
   TextEditingController _titleController= TextEditingController();
   TextEditingController _mainController=TextEditingController();
   String txt="";
+  String date="";
 
   void initState() {
     super.initState();
     txt="Add img";
+    date=tdate.substring(0,19);
   }
 
   @override

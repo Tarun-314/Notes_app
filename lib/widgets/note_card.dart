@@ -25,12 +25,12 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc){
             ),
             ),
             SizedBox(height: 4.0,),
+            Text(doc['creation_date'],style: Appstyle.mainTitle,),
+            SizedBox(height: 4.0,),
             if(path!="") buildFileImage(),
-            if(path=="")SizedBox(height: 4.0,),
-            if(path=="")Text(doc['creation_date'],style: Appstyle.mainTitle,),
             if(path=="")SizedBox(height:8.0),
             if(path=="")Text(doc['note_content'],style: Appstyle.mainContent,
-            overflow: TextOverflow.ellipsis ,
+            overflow: TextOverflow.fade,
               maxLines: 3,
             ),
           ],
@@ -41,21 +41,10 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc){
 Widget buildFileImage(){
   return
     Center(
-      widthFactor: 40.0,
-      child:Container(
-
-          child:ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            
-            child:Image.file(
-              File(path),
-              height: 115,
-              width: 100,
-
-
-            ),
-          ),
-        ),
+      child:CircleAvatar(
+        radius: 50,
+        backgroundImage: FileImage(File(path),),
+      )
 
     );
 }
